@@ -27,6 +27,10 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
+var first = (arr, cb) => {
+  cb(arr[0]);
+}
+
 // Code Here 
 
 // Do not edit the code below.
@@ -49,6 +53,10 @@ first(names, function(firstName){
 
 //Code Here
 
+var last = (arr, cb) => {
+  cb(arr[arr.length-1]);
+}
+
 // Do not edit the code below.
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -66,6 +74,10 @@ last(names, function(lastName){
 */
 
 //Code Here
+
+var multiply = (num1,num2,cb) => {
+  cb(num1*num2);
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -85,6 +97,16 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
+
+var contains = (arr, name, cb) =>{
+  for(i=0;i<arr.length;i++){
+    if(arr[i] == name){
+      cb(true);
+      return;
+    }
+  }
+  cb(false);
+}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -107,6 +129,19 @@ contains(names, 'Colt', function(result){
 
 //Code Here
 
+var uniq = (arr,cb) => {
+var newArr = [];
+var discovered = {};
+var j = 0;
+  for(var i=0;i<arr.length;i++){
+    if(discovered[arr[i]] !== 1){
+      discovered[arr[i]] = 1;
+      newArr[j++] = arr[i];
+    }
+  }
+  cb(newArr);
+}
+
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -117,12 +152,21 @@ uniq(names, function(uniqArr){
 
 ////////// PROBLEM 6 //////////
 
+
+
+
 /* 
   Write a function called each that takes in an array of names and a callback function. 
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
 //Code Here 
+
+var each = function(names, cb) {
+  for(i=0;i<names.length;i++){
+    cb(names[i],i)
+  };
+};
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -140,6 +184,14 @@ each(names, function(item, indice){
 */
 
 // Code here
+
+var getUserById = (users,ID,cb) => {
+  var i = 0;
+  while((users[i].id != ID) && i<users.length){
+    i++;
+  }
+  cb(users[i]);
+}
 
 // Do not edit the code below.
 var users = [
